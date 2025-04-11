@@ -1,0 +1,24 @@
+.carousel_container {
+  position: relative;
+  /* top: 80px; */
+
+  width: 85%;
+  max-width: 1362px;
+  height: 450px;
+  overflow: hidden;
+  margin: 20px auto;
+  border-radius: 20px;
+  margin-top: 5%;
+}
+
+.carousel_slide {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel_slide img {
+  width: 33.33%;
+  height: 100%;
+}
