@@ -153,6 +153,8 @@
 }
 
 .filter_btn {
+  /* width: 9.6%; /* width: 9%; */
+  height: 42px;
   padding: 0.3rem 0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.356);
   border-radius: 14px;

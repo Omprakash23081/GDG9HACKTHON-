@@ -30,7 +30,7 @@ function ProblamTitalPrinter({
     ? problamData.filter((item) => item.tag.includes(currentquestion))
     : problamData;
 
-  if (currentfilter === "All") {
+  if (currentfilter === "All" || currentfilter === "Filter") {
     filteredProblams = filteredProblams;
   } else {
     filteredProblams = currentfilter
@@ -59,3 +59,6 @@ function ProblamTitalPrinter({
 }
 
 export default ProblamTitalPrinter;
+
+
+

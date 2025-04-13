@@ -16,13 +16,15 @@ import ProblamTitalPrinter from "./components/ProblamTitalPrinter";
 import Contect from "./components/Contect";
 import Printer from "./components/Printer";
 import { useRef } from "react";
+import Filter from "./components/Filter";
 
 function App() {
   // const count = useRef(0);
-  const [currentSlide, setcurrentSlide] = useState("Language");
-  const [currentquestions, setcurrentquestions] = useState("");
-  const [currentquestion, setcurrentquestion] = useState("");
-  const [currentfilter, setcurrentfilter] = useState("");
+  const [currentSlide, setcurrentSlide] = useState("Language"); //this is for slide
+  const [currentquestions, setcurrentquestions] = useState(""); //for on witch card we are clicking to shair information to other slide
+  const [currentquestion, setcurrentquestion] = useState(""); //it is used for filter section like current prives and upcoming
+  const [currentfilter, setcurrentfilter] = useState(""); // it is used for filter section like all important most important and like that
+  const [showFilterPanel, setShowFilterPanel] = useState(false); //it is for  slide-out side panel or side filter panel
 
   const problam = [
     {
@@ -31,8 +33,8 @@ function App() {
       description: "Current Scholarship ",
       title:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias a saepe odio.",
-      tag: ["Current", "previous", "Upcomming"],
-      filter: ["importent", "most importent", "attempt", "not Attempt"],
+      tag: ["Current", "previous", "Upcoming"],
+      filter: ["important", "most important", "attempt", "not Attempt"],
     },
     {
       id: "p2",
@@ -40,8 +42,8 @@ function App() {
       description: "Grovement Schime For Students",
       title:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias a saepe odio.",
-      tag: ["", "", "Upcomming"],
-      filter: ["importent", "most importent", "attempt", "not Attempt"],
+      tag: ["", "", "Upcoming"],
+      filter: ["important", "most important", "attempt", "not Attempt"],
     },
     {
       id: "p3",
@@ -61,6 +63,15 @@ function App() {
       tag: ["Current", "previous", ""],
       filter: ["importent", "most importent", "Attempted", "Not Attempted"],
     },
+    {
+      id: "p5",
+      type: "Physics",
+      description: "Current Scholarship ",
+      title:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias a saepe odio.",
+      tag: ["Current", "previous", "Upcoming"],
+      filter: ["important", "most important", "attempt", "not Attempt"],
+    },
   ];
 
   function Slideset(value) {
@@ -73,10 +84,10 @@ function App() {
   }
 
   function filter(value) {
-    if (currentquestion === value) {
-      setcurrentfilter("All");
+    if (value === "Filter") {
+      setShowFilterPanel(true); // just open the panel
     } else {
-      setcurrentfilter(value);
+      setcurrentfilter(value); // apply actual data filter
     }
   }
 
@@ -136,6 +147,11 @@ function App() {
               settimefilter={settimefilter}
               currentquestion={currentquestion}
             />
+            {showFilterPanel && (
+              <div>
+                <Filter onClose={() => setShowFilterPanel(false)} />
+              </div>
+            )}
             <ProblamTitalPrinter
               Slideset={Slideset}
               problam={problam}
@@ -143,7 +159,6 @@ function App() {
               currentfilter={currentfilter}
             />
           </div>
-
         </div>
       )}
     </>
